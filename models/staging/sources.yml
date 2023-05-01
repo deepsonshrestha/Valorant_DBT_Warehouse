@@ -6,3 +6,5 @@ sources:
     schema: raw  
     tables:
       - name: metadata
+      - name: user_in_game_details
+      - name: user_social_details
