@@ -8,6 +8,7 @@ updated as (
 
     select
         match_id,
+        puuid,
         mode,
         season_id,
         cluster,
@@ -22,6 +23,7 @@ final as (
 
     select
         match_id,
+        puuid,
         season_id,
         cluster,
         map,
