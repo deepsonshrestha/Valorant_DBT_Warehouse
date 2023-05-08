@@ -27,6 +27,7 @@ final as (
         season_id,
         cluster,
         map,
+        mode,
         start_date,
         start_at
     from updated

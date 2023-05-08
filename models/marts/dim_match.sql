@@ -13,6 +13,7 @@ updated as (
         season_id,
         cluster,
         map,
+        mode,
         start_date,
         start_at
     from source
@@ -27,6 +28,7 @@ final as (
         season_id,
         cluster,
         map,
+        mode,
         start_date,
         start_at
     from updated

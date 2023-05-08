@@ -16,6 +16,12 @@ dim_player as (
 
 ),
 
+teams_info as (
+
+    select * from {{ ref('stg_teams_info') }}
+
+),
+
 joined_keys as (
 
     select
@@ -33,9 +39,16 @@ joined_keys as (
                 then {{ dbt_utils.generate_surrogate_key(['\'No Match\''])}}
             else dim_player.player_key
         end as player_key,
-        source.team as team_key,
         source.level as level_key,
         source.character as character_key,
+        source.team as team_key,
+        case
+            when teams_info.red_match_won = '1'
+                then 'red'
+            when teams_info.blue_match_won = '1'
+                then 'blue'
+            else 'draw'
+        end as winning_team_key,
         source.session_playtime_minutes,
         source.afk_rounds,
         source.friendly_fire_incoming,
@@ -62,6 +75,8 @@ joined_keys as (
         on source.match_id = dim_match.match_id
     left join dim_player
         on source.puuid = dim_player.valorant_puuid
+    left join teams_info
+        on source.match_id = teams_info.match_id
 
 ),
 
@@ -71,6 +86,7 @@ final as (
         match_key,
         player_key,
         team_key,
+        winning_team_key,
         level_key,
         character_key,
         session_playtime_minutes,
