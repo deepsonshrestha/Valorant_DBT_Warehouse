@@ -19,11 +19,14 @@ jobs:
           python-version: 3.x
 
       - name: Install dbt
-        run: pip install -r requirements.txt  # Replace with the appropriate installation command
+        run: pip install -r requirements.txt
+
+      - name: Create dbt profiles directory
+        run: mkdir -p ~/.dbt
 
       - name: Configure dbt profiles
         run: |
           echo "${{ secrets.DBT_PROFILE }}" > ~/.dbt/profiles.yml
 
       - name: Run dbt models
-        run: dbt run --target prod  # Replace with your dbt command
+        run: dbt run --target prod
