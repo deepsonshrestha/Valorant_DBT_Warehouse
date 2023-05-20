@@ -1,0 +1,29 @@
+name: Run dbt models
+
+on:
+  schedule:
+    - cron: "0 0 * * *"  # Replace with your desired schedule (runs at midnight every day)
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+
+      - name: Install dbt
+        run: pip install -r requirements.txt  # Replace with the appropriate installation command
+
+      - name: Configure dbt profiles
+        run: |
+          echo "${{ secrets.DBT_PROFILE }}" > ~/.dbt/profiles.yml
+
+      - name: Run dbt models
+        run: dbt run --target prod  # Replace with your dbt command
