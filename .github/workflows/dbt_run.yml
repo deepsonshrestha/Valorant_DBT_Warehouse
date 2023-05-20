@@ -29,4 +29,5 @@ jobs:
           echo "${{ secrets.DBT_PROFILE }}" > ~/.dbt/profiles.yml
 
       - name: Run dbt models
+        run: dbt deps
         run: dbt run --target prod
