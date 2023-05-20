@@ -2,7 +2,7 @@ name: Run dbt models
 
 on:
   schedule:
-    - cron: "0 0 * * *"  # Replace with your desired schedule (runs at midnight every day)
+    - cron: "0 */4 * * *"
   workflow_dispatch:
 
 jobs:
