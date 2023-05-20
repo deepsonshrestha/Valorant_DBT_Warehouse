@@ -28,6 +28,8 @@ jobs:
         run: |
           echo "${{ secrets.DBT_PROFILE }}" > ~/.dbt/profiles.yml
 
-      - name: Run dbt models
+      - name: Install dbt dependencies
         run: dbt deps
+
+      - name: Run dbt models
         run: dbt run --target prod
