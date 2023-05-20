@@ -32,7 +32,8 @@ joined_data as (
             else source.team_key
         end as player_team,
         dim_match.start_date, --utc
-        dim_player.in_game_name ||' #' || dim_player.tagline as in_game_name
+        dim_player.in_game_name ||' #' || dim_player.tagline as in_game_name,
+        1 as match_count
     from source
     left join dim_match
         on source.match_key = dim_match.match_key
@@ -73,7 +74,8 @@ final as (
         overall_loadout_value,
         average_loadout_value,
         damage_made,
-        damage_received
+        damage_received,
+        match_count
     from joined_data
 
 )
