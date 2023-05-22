@@ -1,15 +1,6 @@
-Welcome to your new dbt project!
+### Valorant Stats Warehouse
 
-### Using the starter project
+This repo aims to have the raw ingested game details transformed and fed into the Looker studio dashboard.
 
-Try running the following commands:
-- dbt run
-- dbt test
-
-
-### Resources:
-- Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
-- Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
-- Join the [chat](https://community.getdbt.com/) on Slack for live discussions and support
-- Find [dbt events](https://events.getdbt.com) near you
-- Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+<a href='valorant.deepsonshrestha.com.np'>Dashboard Link</a>
+<a href = 'https://github.com/deepsonshrestha/Valorant_Prefect_Github_Action'>Orchestration Link</a>
